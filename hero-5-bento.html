@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amarachukwu Eze | Data Engineer, MCT &amp; Author</title>
+  <meta name="description" content="Amarachukwu Eze: UK-based Data Engineer, Microsoft Certified Trainer, multi-published author and Founder of DataHER Africa." />
+  <link rel="icon" href="assets/images/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      /* palette pulled from the brown studio backdrop + red coat */
+      --bg: #efe6da;
+      --ink: #1d1512;
+      --brown: #6e4a31;
+      --tan: #c79f73;
+      --sand: #e2d3c0;
+      --red: #d3261c;
+      --cream: #faf5ef;
+      --muted: #6f625a;
+      --font: "Inter", system-ui, sans-serif; /* same single family as the clean version */
+      --gap: clamp(8px, 1vw, 14px);
+      --radius: clamp(18px, 1.8vw, 28px);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      overflow: hidden; /* non-scrollable landing page */
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      height: 100vh;
+      height: 100dvh;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: var(--gap);
+      padding: var(--gap) clamp(12px, 1.6vw, 24px) clamp(12px, 1.6vw, 24px);
+    }
+
+    /* ---------- Header ---------- */
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 4px 6px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+    .brand img { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; object-position: center 15%; background: var(--red); }
+    .links { display: flex; gap: 4px; list-style: none; font-size: 0.92rem; }
+    .links a { display: block; padding: 8px 14px; border-radius: 999px; color: var(--muted); transition: background 0.2s, color 0.2s; }
+    .links a:hover { background: var(--sand); color: var(--ink); }
+    .socials { display: flex; gap: 6px; }
+    .socials a {
+      display: grid; place-items: center;
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--sand);
+      transition: background 0.2s, color 0.2s;
+    }
+    .socials a:hover { background: var(--ink); color: var(--cream); }
+    .socials svg { width: 15px; height: 15px; fill: currentColor; }
+
+    /* ---------- Bento grid ---------- */
+    .bento {
+      display: grid;
+      grid-template-columns: 1.55fr 1fr 1.05fr 1fr;
+      grid-template-rows: 1fr 1fr 0.8fr;
+      grid-template-areas:
+        "intro intro photo dh"
+        "intro intro photo books"
+        "cta   skills photo feat";
+      gap: var(--gap);
+      min-height: 0;
+    }
+
+    .tile {
+      position: relative;
+      border-radius: var(--radius);
+      padding: clamp(16px, 1.8vw, 28px);
+      overflow: hidden;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .label { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; }
+
+    /* intro */
+    .intro { grid-area: intro; background: var(--ink); color: var(--cream); justify-content: space-between; }
+    .intro .top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .status { display: inline-flex; align-items: center; gap: 8px; font-size: 0.82rem; color: rgba(250, 245, 239, 0.7); }
+    .status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #5ee08a; box-shadow: 0 0 0 4px rgba(94, 224, 138, 0.16); }
+    .intro h1 {
+      font-weight: 700;
+      font-size: clamp(2.6rem, 5.6vw, 6rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      margin: 6px 0 clamp(10px, 2vh, 18px);
+    }
+    .intro h1 em { font-style: normal; color: var(--red); }
+    .intro p { max-width: 50ch; font-size: clamp(0.9rem, 1.05vw, 1.02rem); line-height: 1.55; color: rgba(250, 245, 239, 0.72); }
+    .intro p strong { color: var(--cream); font-weight: 500; }
+
+    /* photo */
+    .tile.photo { grid-area: photo; padding: 0; background: var(--brown); }
+    .photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
+    .photo .tag {
+      position: absolute;
+      left: 14px; bottom: 14px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(250, 245, 239, 0.9);
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* DataHER */
+    .dh { grid-area: dh; background: var(--red); color: #fff; justify-content: space-between; transition: transform 0.25s; }
+    .dh:hover { transform: translateY(-3px); }
+    .dh h2 { font-weight: 700; font-size: clamp(1.3rem, 1.9vw, 1.9rem); letter-spacing: -0.03em; line-height: 1; }
+    .dh p { font-size: 0.84rem; line-height: 1.45; opacity: 0.88; margin-top: 8px; }
+    .corner {
+      position: absolute; top: 14px; right: 14px;
+      display: grid; place-items: center;
+      width: 34px; height: 34px; border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      font-size: 0.95rem;
+    }
+
+    /* books */
+    .books { grid-area: books; background: var(--sand); justify-content: space-between; }
+    .books .label { color: var(--brown); }
+    .spines { display: grid; gap: 8px; }
+    .spine {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: var(--cream);
+      font-weight: 500;
+      font-size: clamp(0.95rem, 1.15vw, 1.15rem);
+      line-height: 1.1;
+      box-shadow: inset 5px 0 0 var(--red);
+    }
+    .spine:nth-child(2) { box-shadow: inset 5px 0 0 var(--brown); }
+
+    /* CTA */
+    .cta { grid-area: cta; background: var(--tan); justify-content: space-between; transition: background 0.25s; }
+    .cta:hover { background: #d4ad82; }
+    .cta b { font-weight: 700; font-size: clamp(1.3rem, 2vw, 2rem); letter-spacing: -0.03em; line-height: 1; }
+    .cta .row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .cta .circle {
+      display: grid; place-items: center;
+      width: clamp(40px, 3.6vw, 56px); height: clamp(40px, 3.6vw, 56px); border-radius: 50%;
+      background: var(--ink); color: var(--cream);
+      font-size: 1.2rem;
+      transition: transform 0.25s;
+    }
+    .cta:hover .circle { transform: rotate(-45deg); }
+
+    /* skills */
+    .skills { grid-area: skills; background: var(--cream); justify-content: space-between; }
+    .skills .label { color: var(--muted); }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .chips > span { padding: 6px 11px; border-radius: 999px; border: 1px solid var(--sand); font-size: 0.8rem; }
+    .chips .ms { display: inline-flex; align-items: center; gap: 6px; background: var(--ink); color: var(--cream); border-color: var(--ink); }
+    .ms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; width: 12px; height: 12px; }
+    .ms-grid b:nth-child(1) { background: #f25022; } .ms-grid b:nth-child(2) { background: #7fba00; }
+    .ms-grid b:nth-child(3) { background: #00a4ef; } .ms-grid b:nth-child(4) { background: #ffb900; }
+
+    /* featured */
+    .feat { grid-area: feat; background: var(--brown); color: var(--cream); justify-content: space-between; }
+    .feat .label { color: var(--tan); }
+    .feat ul { list-style: none; display: grid; gap: 4px; font-weight: 500; font-size: clamp(0.95rem, 1.2vw, 1.15rem); line-height: 1.2; }
+
+    /* ---------- Entrance ---------- */
+    .tile { opacity: 0; transform: scale(0.97); animation: pop 0.7s cubic-bezier(.2, .7, .2, 1) forwards; }
+    .intro { animation-delay: 0s; } .photo { animation-delay: 0.08s; } .dh { animation-delay: 0.16s; }
+    .books { animation-delay: 0.22s; } .cta { animation-delay: 0.28s; } .skills { animation-delay: 0.34s; } .feat { animation-delay: 0.4s; }
+    @keyframes pop { to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { .tile { animation: none; opacity: 1; transform: none; } }
+
+    /* ---------- Laptop / short screens ---------- */
+    @media (max-height: 760px) and (min-width: 821px) {
+      .intro p .extra { display: none; }
+      .dh p { display: none; }
+    }
+
+    /* ---------- Tablet ---------- */
+    @media (max-width: 1100px) and (min-width: 821px) {
+      .links { display: none; }
+      .bento {
+        grid-template-columns: 1.4fr 1fr 1fr;
+        grid-template-areas:
+          "intro intro photo"
+          "intro intro photo"
+          "cta   dh    books";
+      }
+      .skills, .feat { display: none; }
+    }
+
+    /* ---------- Mobile / portrait ---------- */
+    @media (max-width: 820px), (max-aspect-ratio: 4/5) {
+      .links { display: none; }
+      .bento {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        grid-template-rows: minmax(0, 1fr) auto auto;
+        grid-template-areas:
+          "photo dh"
+          "intro intro"
+          "cta   books";
+      }
+      .skills, .feat, .intro .top { display: none; }
+      .intro h1 { font-size: clamp(2.2rem, 10vw, 3.6rem); }
+      .intro p { font-size: 0.86rem; }
+      .intro p .extra { display: none; }
+      .books .spine:nth-child(2) { display: none; }
+      .tile { padding: 14px; }
+      .tile.photo { padding: 0; }
+      .brand { font-size: 0.9rem; }
+    }
+
+    @media (max-width: 820px) and (max-height: 700px) {
+      .books { display: none; }
+      .bento { grid-template-areas: "photo dh" "intro intro" "cta cta"; }
+      .intro p { display: none; }
+    }
+  </style>
+  <!-- preview only: "All designs" tab + unbuilt-link notes. Remove at launch. -->
+  <script src="assets/preview-nav.js" defer></script>
+</head>
+<body>
+  <div class="page">
+    <header class="nav">
+      <a href="index.html" class="brand">
+        <img src="assets/images/logo.png" alt="Amarachukwu Eze logo" />
+        Amarachukwu Eze
+      </a>
+      <nav aria-label="Primary">
+        <ul class="links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="https://medium.com/@amaraeze" target="_blank" rel="noopener">Blog</a></li>
+          <li><a href="books.html">Books</a></li>
+          <li><a href="https://dataherafrica.org/" target="_blank" rel="noopener">Community</a></li>
+          <li><a href="features.html">Features</a></li>
+        </ul>
+      </nav>
+      <nav class="socials" aria-label="Social links">
+        <a href="https://www.linkedin.com/in/amarachukwu-eze/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.84-2.05 3.78-2.05C20.6 8.65 21 11.2 21 14.5V21h-4v-5.8c0-1.38-.03-3.16-1.93-3.16-1.93 0-2.22 1.5-2.22 3.06V21H9z"/></svg>
+        </a>
+        <a href="https://medium.com/@amaraeze" target="_blank" rel="noopener" aria-label="Medium">
+          <svg viewBox="0 0 24 24"><path d="M13.5 12a6.75 6.75 0 1 1-13.5 0 6.75 6.75 0 0 1 13.5 0zm7.4 0c0 3.54-1.51 6.42-3.38 6.42S14.14 15.54 14.14 12s1.51-6.42 3.38-6.42S20.9 8.46 20.9 12zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z"/></svg>
+        </a>
+        <a href="https://github.com/amaraeze" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>
+        </a>
+        <a href="https://x.com/jollybaebe" target="_blank" rel="noopener" aria-label="X">
+          <svg viewBox="0 0 24 24"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.21-6.82-5.97 6.82H1.67l7.73-8.84L1.25 2.25h6.83l4.71 6.23zm-1.16 17.52h1.83L7.08 4.13H5.12z"/></svg>
+        </a>
+      </nav>
+    </header>
+
+    <main class="bento">
+      <section class="tile intro">
+        <div class="top">
+          <span class="label" style="color: var(--tan)">UK-based · a.k.a. Jollybabe</span>
+          <span class="status">Open to speaking &amp; training</span>
+        </div>
+        <div>
+          <h1>Data &amp; AI that<br /><em>changes lives.</em></h1>
+          <p>
+            <strong>Amarachukwu Eze</strong> is a Data Engineer, Microsoft Certified Trainer, speaker, multi-published
+            author and founder of <strong>DataHER Africa</strong>.<span class="extra"> She creates data-driven solutions and
+            AI projects that solve real-world problems while empowering communities and emerging tech talent.</span>
+          </p>
+        </div>
+      </section>
+
+      <figure class="tile photo">
+        <img src="assets/images/hero-chair.png" alt="Amarachukwu Eze seated in a red cape coat against a brown studio backdrop" />
+        <figcaption class="tag">Speaker at tech conferences &amp; events ✦</figcaption>
+      </figure>
+
+      <a href="https://dataherafrica.org/" target="_blank" rel="noopener" class="tile dh">
+        <span class="corner" aria-hidden="true">↗</span>
+        <span class="label">Founder</span>
+        <div>
+          <h2>DataHER<br />Africa</h2>
+          <p>Empowering Black &amp; Brown women in Data, AI &amp; emerging tech.</p>
+        </div>
+      </a>
+
+      <a href="books.html" class="tile books">
+        <span class="label">Multi-published author</span>
+        <div class="spines">
+          <span class="spine">A Journey to Tech</span>
+          <span class="spine">The Teacher Called Experience</span>
+        </div>
+      </a>
+
+      <a href="contact.html" class="tile cta">
+        <span class="label">Book a 1:1</span>
+        <div class="row">
+          <b>Let's have<br />a chat</b>
+          <span class="circle" aria-hidden="true">→</span>
+        </div>
+      </a>
+
+      <section class="tile skills">
+        <span class="label">What I do</span>
+        <div class="chips">
+          <span class="ms"><span class="ms-grid" aria-hidden="true"><b></b><b></b><b></b><b></b></span>MCT</span>
+          <span>Data Engineering</span>
+          <span>Public Speaking</span>
+          <span>Snowflake</span>
+          <span>AI Projects</span>
+          <span>Power BI</span>
+          <span>Mentorship</span>
+        </div>
+      </section>
+
+      <section class="tile feat">
+        <span class="label">Featured &amp; speaking</span>
+        <ul>
+          <li>Punch</li>
+          <li>TechProfiles</li>
+          <li>Microsoft LEAP</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
