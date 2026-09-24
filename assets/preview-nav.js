@@ -1,12 +1,12 @@
 /*
   Preview-only helper for the hero designs. Remove the <script> tag that loads this
   file when the site goes live.
-  - Adds a small "All designs" pill in the bottom-left corner, linking back to index.html.
+  - Adds a small "All designs" pill in the bottom-left corner, linking back to designs.html.
   - Links to pages that aren't built yet show a short note instead of a missing page.
 */
 (function () {
-  var HOME = "index.html";
-  var BUILT = ["index.html", "hero-2-clean.html", "hero-2-clean-particles.html", "hero-2-clean-lens.html", "hero-2-clean-stepout.html"];
+  var HOME = "designs.html";
+  var BUILT = ["index.html", "designs.html", "hero-2-clean.html"];
 
   var css =
     ".pv-tab{position:fixed;left:16px;bottom:16px;z-index:9999;display:inline-flex;align-items:center;gap:6px;" +

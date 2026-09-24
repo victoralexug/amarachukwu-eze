@@ -729,6 +729,34 @@
     @media (max-width: 820px), (max-aspect-ratio: 4/5) {
       .facts { padding-top: var(--s3); }
     }
+
+    /* ---------- Design guide pass ----------
+       1 Hierarchy: red is used only for the one primary action (the avatar ring is now neutral).
+       2 Colour:    primary red, charcoal, and one set of neutrals (--surface-2 for pills and chips).
+       3 Type:      Inter, three weights, and only the four size tokens below for text.
+       4 Scanning:  unchanged; one headline, one sentence, one button, three labelled cards.
+       5 Space:     every gap and padding on the 8px rhythm (4px half-steps only inside small parts);
+                    tap targets on phones at least 44px. */
+    :root { --surface-2: #efe9e5; }
+    .brand img { box-shadow: 0 0 0 1.5px var(--surface), 0 0 0 2.5px var(--ink-2); }
+    .nav-cta i, .menu-btn { background-color: var(--surface-2); }
+    .nav-cta i { background-color: transparent; }
+    .actions .btn-primary i, .fact-arrow { font-size: var(--fs-small); }
+    .fact-text small { font-size: var(--fs-body); }
+    .fact-text strong { font-size: var(--fs-small); } /* screen-reader detail line */
+    .facts { gap: var(--s2); }
+    .fact { gap: var(--s1); padding: var(--s2) 48px var(--s2) var(--s2); }
+    .fact-arrow { right: 12px; }
+    @media (max-width: 820px), (max-aspect-ratio: 4/5) {
+      .facts { gap: var(--s1); }
+      .fact { padding: 12px; }
+      .fact-text small, .fact-text strong { font-size: var(--fs-small); }
+      .fact-arrow { width: 24px; height: 24px; top: 8px; right: 8px; font-size: var(--fs-small); }
+      .brand { min-height: 44px; }
+      .menu-btn { height: 44px; }
+      .socials a { width: 44px; height: 44px; }
+      .socials { gap: 0; }
+    }
   </style>
   <!-- preview only: "All designs" tab + unbuilt-link notes. Remove at launch. -->
   <script src="assets/preview-nav.js" defer></script>
@@ -825,8 +853,8 @@
           <img class="seal-icon" src="assets/images/dataher-icon.png" alt="" width="36" height="36" />
         </div>
         <picture>
-          <source srcset="assets/images/hero-chair.webp" type="image/webp" />
-          <img src="assets/images/hero-chair.png" width="780" height="1080" fetchpriority="high" alt="Amarachukwu Eze seated in a red cape coat, smiling" />
+          <source srcset="assets/images/hero-portrait.webp" type="image/webp" />
+          <img src="assets/images/hero-portrait.png" width="522" height="1169" fetchpriority="high" alt="Amarachukwu Eze standing in a red cape coat, smiling" />
         </picture>
       </figure>
     </section>
