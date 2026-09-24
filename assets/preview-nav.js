@@ -6,7 +6,7 @@
 */
 (function () {
   var HOME = "index.html";
-  var BUILT = ["index.html", "hero-1-spotlight.html", "hero-2-clean.html", "hero-5-bento.html", "hero-5-bento-clean.html"];
+  var BUILT = ["index.html", "hero-2-clean.html", "hero-2-clean-particles.html", "hero-2-clean-lens.html", "hero-2-clean-stepout.html"];
 
   var css =
     ".pv-tab{position:fixed;top:0;left:50%;transform:translateX(-50%);z-index:9999;display:inline-flex;align-items:center;gap:6px;" +
