@@ -216,6 +216,15 @@
       .seal svg { animation: none; }
     }
 
+    /* ---------- Tablet + mobile: sized by content, not the screen height ---------- */
+    @media (max-width: 1100px), (max-aspect-ratio: 4/5) {
+      :root { --fs-display: clamp(2.5rem, 5.2vw, 5rem); }
+      html, body { height: auto; overflow: visible; }
+      .hero { height: auto; grid-template-rows: auto; }
+      .main { padding: var(--s4) 0 var(--s8); }
+      .photo { height: auto; aspect-ratio: 4 / 5; }
+    }
+
     /* ---------- Tablet ---------- */
     @media (max-width: 1100px) {
       .links { display: none; }
@@ -229,15 +238,13 @@
       .nav { padding: var(--s2) 0; }
       .main {
         grid-template-columns: 1fr;
-        grid-template-rows: minmax(0, 1fr) auto;
-        gap: var(--s3);
-        align-items: stretch;
-        padding-bottom: var(--s3);
+        gap: var(--s4);
+        padding: var(--s1) 0 var(--s6);
       }
-      .photo { order: -1; justify-self: stretch; max-width: none; height: 100%; min-height: 0; border-radius: 24px; }
-      .copy { gap: var(--s2); }
+      .photo { order: -1; justify-self: stretch; max-width: none; border-radius: 24px; }
+      .copy { gap: var(--s3); }
       h1 { font-size: clamp(2rem, 9vw, 3rem); margin-top: 0; }
-      .lead { font-size: var(--fs-body); line-height: 1.55; }
+      .lead { font-size: var(--fs-body); line-height: 1.6; }
       .actions { gap: var(--s1) var(--s2); }
       .actions .btn { flex: 1 1 100%; min-width: 0; padding: 14px var(--s2); }
       .socials a { width: 36px; height: 36px; }
@@ -248,20 +255,14 @@
       .facts dd { font-size: var(--fs-small); }
     }
 
-    /* Short screens: drop the least important content first */
-    @media (max-height: 760px) and (max-width: 820px) {
-      .lead { display: none; }
-    }
-    @media (max-height: 700px) {
+    /* Short desktop screens: drop the least important content first */
+    @media (min-width: 1101px) and (min-aspect-ratio: 4/5) and (max-height: 700px) {
       .eyebrow { display: none; }
       h1 { margin-top: 0; }
       .copy { gap: var(--s3); }
       .main { padding-bottom: var(--s3); }
     }
-    @media (max-height: 640px) and (max-width: 820px) {
-      .socials { display: none; }
-    }
-    @media (max-height: 540px) {
+    @media (min-width: 1101px) and (min-aspect-ratio: 4/5) and (max-height: 540px) {
       .facts { display: none; }
     }
   </style>
