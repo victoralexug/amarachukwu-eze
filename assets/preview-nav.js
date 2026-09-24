@@ -1,7 +1,7 @@
 /*
   Preview-only helper for the hero designs. Remove the <script> tag that loads this
   file when the site goes live.
-  - Adds a small "All designs" tab at the top of the page, linking back to index.html.
+  - Adds a small "All designs" pill in the bottom-left corner, linking back to index.html.
   - Links to pages that aren't built yet show a short note instead of a missing page.
 */
 (function () {
@@ -9,10 +9,10 @@
   var BUILT = ["index.html", "hero-2-clean.html", "hero-2-clean-particles.html", "hero-2-clean-lens.html", "hero-2-clean-stepout.html"];
 
   var css =
-    ".pv-tab{position:fixed;top:0;left:50%;transform:translateX(-50%);z-index:9999;display:inline-flex;align-items:center;gap:6px;" +
-    "padding:5px 14px 6px;border-radius:0 0 12px 12px;background:#16110f;color:#faf8f6;font:500 12px/1.2 Inter,system-ui,sans-serif;" +
-    "text-decoration:none;box-shadow:0 6px 16px -8px rgba(0,0,0,.5);transition:padding .2s}" +
-    ".pv-tab:hover{padding-top:9px}" +
+    ".pv-tab{position:fixed;left:16px;bottom:16px;z-index:9999;display:inline-flex;align-items:center;gap:6px;" +
+    "padding:7px 14px;border-radius:999px;background:#16110f;color:#faf8f6;font:500 12px/1.2 Inter,system-ui,sans-serif;" +
+    "text-decoration:none;box-shadow:0 6px 16px -8px rgba(0,0,0,.5);transition:background .2s}" +
+    ".pv-tab:hover{background:#3a302c}" +
     ".pv-tab:focus-visible{outline:2px solid #c8261c;outline-offset:2px}" +
     ".pv-note{position:fixed;left:50%;bottom:24px;transform:translate(-50%,12px);z-index:9999;display:flex;align-items:center;gap:12px;" +
     "max-width:calc(100% - 32px);padding:10px 10px 10px 18px;border-radius:999px;background:#16110f;color:#faf8f6;" +
