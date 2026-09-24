@@ -1,0 +1,9 @@
+Placeholder images for the facts cards. Replace with Amarachukwu's own photos and book covers before launch.
+
+event-1.webp  "Gooseneck microphone on podium with stage bokeh lights 01" - Wikimedia Commons, CC BY-SA 4.0
+event-2.webp  "Audience from the pressdeck - Behind the scenes - TNW Conference 2008 - Day 1" - Wikimedia Commons, CC BY-SA 2.0
+event-3.webp  "Gfp-lecture-hall" - Wikimedia Commons, public domain
+book-1.webp, book-2.webp  made for this project (placeholder covers)
+bg-speaker.webp  larger crop of event-2's source photo (CC BY-SA 2.0)
+bg-featured.webp  larger crop of event-1's source photo (CC BY-SA 4.0)
+bg-author.webp  made for this project from the placeholder covers
