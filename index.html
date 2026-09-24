@@ -845,7 +845,7 @@
     }
 
     /* ---------- 3. Preloader ----------
-       Her monogram drawn in dots on charcoal, a line and a percentage; then the whole screen lifts away
+       Her logo drawn in dots (in its own colours) on charcoal, a line and a percentage; then the whole screen lifts away
        and the hero's own entrance plays. Shown once per visit; skipped for reduced motion and without JS. */
     .preloader { display: none; }
     html.is-loading .preloader {
@@ -860,7 +860,14 @@
       transition: clip-path 1s var(--ease-signature);
     }
     html.is-loading .preloader.is-done { clip-path: inset(0 0 100% 0); }
-    .preloader canvas { width: min(64vw, 300px); height: auto; aspect-ratio: 1; }
+    .preloader-logo { position: relative; width: min(64vw, 300px); aspect-ratio: 1;
+      -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 100%);
+      mask-image: linear-gradient(180deg, #000 72%, transparent 100%); /* the photo is cut off square: fade its bottom edge */
+    }
+    .preloader-logo canvas, .preloader-logo img { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .preloader-logo img { opacity: 0; transform: scale(0.98); transition: opacity 0.6s var(--ease-signature), transform 0.9s var(--ease-signature); }
+    .preloader.is-sharp .preloader-logo img { opacity: 1; transform: none; }
+    .preloader.is-sharp .preloader-logo canvas { opacity: 0; transition: opacity 0.6s var(--ease-signature); }
     .preloader-line, .preloader-count {
       position: absolute;
       bottom: var(--s4);
@@ -909,7 +916,7 @@
       a:hover > .roll span, a:focus-visible > .roll span { transform: none; }
     }
   </style>
-  <!-- preview only: "All designs" tab + unbuilt-link notes. Remove at launch. -->
+  <!-- preview only: "not built yet" notes for links to unbuilt pages. Remove at launch. -->
   <script src="assets/preview-nav.js" defer></script>
   <script>
     (function () {
@@ -923,7 +930,10 @@
 </head>
 <body>
   <div class="preloader" aria-hidden="true">
-    <canvas width="360" height="360"></canvas>
+    <div class="preloader-logo">
+      <canvas width="360" height="360"></canvas>
+      <img src="assets/images/logo.png" alt="" width="360" height="360" />
+    </div>
     <span class="preloader-line">Opening doors…</span>
     <span class="preloader-count">0%</span>
     <span class="preloader-bar"><i></i></span>
@@ -1137,7 +1147,7 @@
     })();
   </script>
   <script>
-    // Preloader: "AE" drawn in dots, a count that follows real loading, then the screen lifts away
+    // Preloader: her logo drawn in dots, a count that follows real loading, then the screen lifts away
     (function () {
       var root = document.documentElement;
       if (!root.classList.contains("is-loading")) return;
@@ -1149,21 +1159,26 @@
       var start = performance.now(), MIN = 1600, MAX = 5000;
       var ready = false, shown = 0, dots = [];
 
-      // sample the monogram into a dot grid
-      var off = document.createElement("canvas");
-      off.width = off.height = 360;
-      var octx = off.getContext("2d");
-      octx.fillStyle = "#fff";
-      octx.font = "700 190px Inter, system-ui, sans-serif";
-      octx.textAlign = "center";
-      octx.textBaseline = "middle";
-      octx.fillText("AE", 180, 190);
-      var data = octx.getImageData(0, 0, 360, 360).data, STEP = 9;
-      for (var y = 0; y < 360; y += STEP) {
-        for (var x = 0; x < 360; x += STEP) {
-          if (data[(y * 360 + x) * 4 + 3] > 128) dots.push({ x: x, y: y, d: (x / 360) * 0.6 + Math.random() * 0.4 });
+      // her logo (tiny inline copy, so its pixels can be read even from a local file) sampled into a dot grid
+      var SMALL = "data:image/png;base64,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";
+      var STEP = 6, src = new Image();
+      src.onload = function () {
+        var off = document.createElement("canvas");
+        off.width = off.height = 60;
+        var octx = off.getContext("2d");
+        octx.drawImage(src, 0, 0);
+        var data = octx.getImageData(0, 0, 60, 60).data;
+        for (var y = 0; y < 60; y++) {
+          for (var x = 0; x < 60; x++) {
+            var i = (y * 60 + x) * 4;
+            if (data[i + 3] < 120) continue;
+            // lift the darkest tones so her black outfit still shows on charcoal
+            var r = Math.round(40 + data[i] * 0.85), g = Math.round(40 + data[i + 1] * 0.85), b = Math.round(40 + data[i + 2] * 0.85);
+            dots.push({ x: x * STEP + 3, y: y * STEP + 3, c: "rgb(" + r + "," + g + "," + b + ")", d: (y / 60) * 0.55 + Math.random() * 0.45 });
+          }
         }
-      }
+      };
+      src.src = SMALL;
 
       function done() { return ready || performance.now() - start > MAX; }
       Promise.all([
@@ -1182,20 +1197,21 @@
         ctx.clearRect(0, 0, 360, 360);
         for (var i = 0; i < dots.length; i++) {
           var a = Math.max(0, Math.min(1, (shown - dots[i].d * 0.8) * 3));
-          ctx.globalAlpha = 0.15 + a * 0.85;
-          ctx.fillStyle = "#faf8f6";
+          ctx.globalAlpha = 0.1 + a * 0.9;
+          ctx.fillStyle = dots[i].c;
           ctx.beginPath();
-          ctx.arc(dots[i].x, dots[i].y, 1.2 + a * 2.2, 0, Math.PI * 2);
+          ctx.arc(dots[i].x, dots[i].y, 0.8 + a * 1.7, 0, Math.PI * 2);
           ctx.fill();
         }
 
         if (shown < 1) { requestAnimationFrame(frame); return; }
+        el.classList.add("is-sharp");
         setTimeout(function () {
           el.classList.add("is-done");
           try { sessionStorage.setItem("ae-loaded", "1"); } catch (e) {}
           setTimeout(function () { root.classList.remove("is-loading"); }, 350); // hero entrance starts as the curtain clears
           setTimeout(function () { el.remove(); }, 1100);
-        }, 250);
+        }, 700);
       }
       requestAnimationFrame(frame);
     })();
