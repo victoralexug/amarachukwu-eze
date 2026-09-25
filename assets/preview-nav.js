@@ -3,7 +3,7 @@
   Links to pages that aren't built yet show a short note instead of a missing page.
 */
 (function () {
-  var BUILT = ["index.html"];
+  var BUILT = ["index.html", "about.html", "features.html", "awards.html", "speaking.html", "books.html", "contact.html"];
 
   var css =
     ".pv-note{position:fixed;left:50%;bottom:24px;transform:translate(-50%,12px);z-index:9999;max-width:calc(100% - 32px);" +
