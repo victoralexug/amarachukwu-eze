@@ -921,6 +921,13 @@
       .roll span { transition: none; }
       a:hover > .roll span, a:focus-visible > .roll span { transform: none; }
     }
+
+    /* ---------- Focus ring ----------
+       No red outline for mouse or touch. A thin ring in the text colour appears only while someone
+       is moving through the page with the Tab key (html.kbd is set by script on Tab, cleared on click/tap). */
+    html *:focus, html *:focus-visible { outline: none !important; }
+    html.kbd *:focus-visible { outline: 2px solid currentColor !important; outline-offset: 3px !important; }
+    html.kbd .btn-primary:focus-visible { outline-color: var(--ink) !important; }
   </style>
   <!-- preview only: "not built yet" notes for links to unbuilt pages. Remove at launch. -->
   <script src="assets/preview-nav.js" defer></script>
@@ -1140,7 +1147,7 @@
         btn.setAttribute("aria-expanded", open);
         btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
         document.documentElement.classList.toggle("menu-open", open);
-        if (open) menu.querySelector("a").focus({ preventScroll: true });
+        if (open && document.documentElement.classList.contains("kbd")) menu.querySelector("a").focus({ preventScroll: true });
       }
 
       btn.addEventListener("click", function () { set(!isOpen()); });
@@ -1222,6 +1229,13 @@
         }, 700);
       }
       requestAnimationFrame(frame);
+    })();
+
+    // Focus ring for keyboard users only: on with Tab, off with any click or tap
+    (function () {
+      var root = document.documentElement;
+      window.addEventListener("keydown", function (e) { if (e.key === "Tab") root.classList.add("kbd"); });
+      window.addEventListener("pointerdown", function () { root.classList.remove("kbd"); });
     })();
 
     // Letter roll: split the labels of "Get in touch" and "Book her to speak" into letters
