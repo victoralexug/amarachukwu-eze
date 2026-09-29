@@ -1,21 +1,21 @@
 /*
   Shared styles for the inner pages (About, Features, Awards, Speaking, Books, Contact).
   Same system as the home page, following the five rules of the design guide:
-    1. Hierarchy   - one solid red primary action per view; everything else is a grey secondary pill or a text link
-    2. Colour      - primary red, deep charcoal, one set of warm neutrals. Nothing else.
+    1. Hierarchy   - one solid plum primary action per view; everything else is a grey secondary pill or a text link
+    2. Colour      - deep plum (actions, dark panels), one apricot accent used sparingly, soft neutrals.
     3. Typography  - Inter only, three weights (400/500/700), five size tokens
     4. Scanning    - numbered sections, a label above every block, key words set in weight, not colour
     5. Whitespace  - everything on an 8px rhythm; sections separated by space and a hairline, not boxes
 */
 :root {
-  --primary: #c8261c;
-  --primary-hover: #a91f17;
-  --secondary: #16110f;
-  --ink: #16110f;
-  --ink-2: #6b625e;
+  --primary: #5b2a86;
+  --primary-hover: #48206b;
+  --secondary: #231433;
+  --ink: #1f1726;
+  --ink-2: #6a6070;
   --surface: #faf8f6;
-  --surface-2: #efe9e5;
-  --line: #e8e2de;
+  --surface-2: #f1eaf1;
+  --line: #e9e2e8;
 
   --font: "Inter", system-ui, sans-serif;
   --fs-display: clamp(2.5rem, 5vw, 4.5rem);
@@ -101,7 +101,7 @@ h3 { font-size: var(--fs-lead); font-weight: 500; line-height: 1.35; letter-spac
 }
 .btn:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
 .btn i { font-style: normal; font-size: var(--fs-small); }
-/* primary: solid red, arrow in a white circle, a soft light sweeps across on hover */
+/* primary: solid plum, arrow in a white circle, a soft light sweeps across on hover */
 .btn-primary { overflow: hidden; padding-right: 58px; background: var(--primary); color: #fff; }
 .btn-primary:hover { background: var(--primary-hover); }
 .btn-primary i {
@@ -706,7 +706,7 @@ a.proof:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; 
 
 /* ======================================================================
    Signature elements: one "wow" per page that shows the page's idea.
-   Charcoal and neutrals only (red stays for the primary action), one easing curve,
+   Charcoal and neutrals only (plum stays for the primary action), one easing curve,
    pointer-driven on desktop, a gentle idle sway on touch, still for reduced motion.
    ====================================================================== */
 html, body { overflow-x: clip; }
@@ -720,7 +720,7 @@ html, body { overflow-x: clip; }
   aspect-ratio: 5 / 4;
   border-radius: 32px;
   overflow: hidden;
-  background: radial-gradient(ellipse 120% 70% at 50% 100%, #231c19 0%, #0e0a09 70%);
+  background: radial-gradient(ellipse 120% 70% at 50% 100%, #231c19 0%, var(--secondary-deep) 70%);
   box-shadow: 0 48px 80px -48px rgba(22, 17, 15, 0.7);
   isolation: isolate;
 }
@@ -794,7 +794,7 @@ html, body { overflow-x: clip; }
   place-items: center;
   aspect-ratio: 5 / 4;
   border-radius: 32px;
-  background: radial-gradient(ellipse 60% 60% at 50% 45%, #2a2320 0%, #0e0a09 75%);
+  background: radial-gradient(ellipse 60% 60% at 50% 45%, var(--secondary-2) 0%, var(--secondary-deep) 75%);
   box-shadow: 0 48px 80px -48px rgba(22, 17, 15, 0.7);
   perspective: 1000px;
   overflow: hidden;
@@ -879,7 +879,7 @@ html, body { overflow-x: clip; }
   padding: 14% 12% 12% 17%;
   background:
     linear-gradient(90deg, rgba(0, 0, 0, 0.35) 0 3%, rgba(255, 255, 255, 0.08) 3% 4.5%, transparent 6%),
-    radial-gradient(ellipse 90% 60% at 30% 10%, #2e2623, var(--secondary) 70%);
+    radial-gradient(ellipse 90% 60% at 30% 10%, var(--secondary-2), var(--secondary) 70%);
   color: var(--surface);
   transform: translateZ(calc(var(--d) / 2));
   transform-origin: left center;
@@ -901,7 +901,7 @@ html, body { overflow-x: clip; }
   color: var(--ink-2);
 }
 .b-back { background: var(--secondary); transform: translateZ(calc(var(--d) / -2)); }
-.b-spine { top: 0; left: calc(var(--d) / -2); width: var(--d); height: 100%; background: linear-gradient(90deg, #0b0807, #2a2320 50%, #0b0807); transform: rotateY(-90deg); }
+.b-spine { top: 0; left: calc(var(--d) / -2); width: var(--d); height: 100%; background: linear-gradient(90deg, var(--secondary-deep), var(--secondary-2) 50%, var(--secondary-deep)); transform: rotateY(-90deg); }
 .b-pages { top: 1.5%; right: calc(var(--d) / -2 + 3px); width: calc(var(--d) - 2px); height: 97%; background: repeating-linear-gradient(90deg, #f3eee9 0 2px, #d9d1cb 2px 3px); transform: rotateY(90deg); }
 .book-wow:hover .b-front { transform: translateZ(calc(var(--d) / 2)) rotateY(-40deg); }
 .book-wow .floor-shadow { position: absolute; bottom: 10%; left: 50%; width: 56%; height: 8%; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(ellipse, rgba(22, 17, 15, 0.32), transparent 70%); filter: blur(6px); }
@@ -956,7 +956,7 @@ html, body { overflow-x: clip; }
 }
 
 /* ---------- Focus ring ----------
-   No red outline for mouse or touch. A thin ring in the text colour appears only while someone
+   No coloured outline for mouse or touch. A thin ring in the text colour appears only while someone
    is moving through the page with the Tab key (html.kbd is set by script on Tab, cleared on click/tap). */
 html *:focus, html *:focus-visible { outline: none !important; }
 html.kbd *:focus-visible { outline: 2px solid currentColor !important; outline-offset: 3px !important; }
@@ -1078,4 +1078,95 @@ html.kbd .btn-primary:focus-visible { outline-color: var(--ink) !important; }
 @media (max-width: 820px) {
   .trophy { width: 64%; }
   .trophy-wow .trophy-label { top: var(--s2); left: var(--s2); }
+}
+
+/* ---------- Plum & apricot (2026-09-29) ----------
+   One warm accent, used sparingly: apricot marks the key words in headlines, the section numbers,
+   the photo offset and small details. Deep plum is the one colour for the primary action and the dark panels. */
+:root { --accent: #ff9f6e; --accent-rgb: 255, 159, 110; --accent-soft: #ffeadf; --secondary-2: #3b2352; --secondary-deep: #140b1d; }
+html {
+  background:
+    radial-gradient(40% 34% at 0% 0%, rgba(var(--accent-rgb), 0.14), rgba(var(--accent-rgb), 0) 70%),
+    radial-gradient(ellipse 70% 60% at 12% 0%, #ffffff 0%, rgba(255, 255, 255, 0) 70%),
+    linear-gradient(180deg, #f9f6f2 0%, #f1ece7 100%);
+  background-attachment: fixed;
+}
+::selection { background: var(--accent); color: var(--ink); }
+
+/* key words in headlines get an apricot marker stroke */
+h1 strong, h2 strong {
+  background: linear-gradient(transparent 64%, rgba(var(--accent-rgb), 0.5) 64%, rgba(var(--accent-rgb), 0.5) 90%, transparent 90%);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 0 0.04em;
+}
+.dark h2 strong { background: none; color: var(--accent); }
+
+/* a small apricot dot before labels */
+.eyebrow { display: inline-flex; align-items: center; gap: var(--s1); }
+.eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex: none; }
+.label .eyebrow::before { display: none; }
+
+/* section numbers: apricot pills */
+.section-head .num, .card .num {
+  display: inline-grid;
+  place-items: center;
+  justify-self: start;
+  min-width: 32px;
+  height: 24px;
+  padding: 0 var(--s1);
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* cards warm up on hover */
+a.card { transition: background 0.5s var(--ease-signature), transform 0.5s var(--ease-signature); }
+a.card:hover { background: var(--accent-soft); transform: translateY(-3px); }
+
+/* wins are the one tag in colour */
+.tag.t-win { background: var(--accent); }
+
+/* photos sit on an apricot offset block */
+.portrait { overflow: visible; background: none; box-shadow: none; }
+.portrait::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: var(--accent); transform: translate(16px, 16px); }
+.portrait img { position: relative; border-radius: inherit; box-shadow: 0 40px 70px -44px rgba(22, 17, 15, 0.6); }
+.portrait > :not(img):not(picture) { z-index: 1; }
+
+/* details */
+.journey-track::after { background: var(--accent); height: 3px; top: 10px; border-radius: 3px; }
+.journey li.on::before { box-shadow: inset 0 0 0 7px var(--accent); }
+.marquee-row span::after { background: var(--accent); opacity: 1; }
+.links a::after { background: var(--accent); height: 3px; border-radius: 3px; }
+.brand img { border-radius: 50%; box-shadow: 0 0 0 2px var(--surface), 0 0 0 3.5px var(--accent); }
+/* closing call to action: a deep plum card, white type, the keyword in apricot and a white button */
+.section:has(> .cta) { border-top: 0; padding-top: var(--s8); }
+.cta {
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  padding: var(--s8) var(--s8);
+  border-radius: 32px;
+  background:
+    radial-gradient(45% 80% at 100% 0%, rgba(var(--accent-rgb), 0.22), rgba(var(--accent-rgb), 0) 70%),
+    radial-gradient(40% 70% at 0% 100%, rgba(155, 92, 210, 0.35), rgba(155, 92, 210, 0) 70%),
+    var(--secondary);
+  color: #fff;
+  box-shadow: 0 40px 80px -48px rgba(35, 20, 51, 0.7);
+}
+.cta h2 { color: #fff; }
+.cta h2 strong { background: none; color: var(--accent); }
+.cta .lead { color: rgba(255, 255, 255, 0.72); }
+.cta .eyebrow { color: rgba(255, 255, 255, 0.72); }
+.cta .actions { justify-content: flex-end; }
+.cta .btn-primary { background: #fff; color: var(--secondary); }
+.cta .btn-primary i { background: var(--primary); color: #fff; }
+.cta .btn-primary:hover { background: var(--accent); }
+.cta .btn-primary::after { background: linear-gradient(110deg, transparent 35%, rgba(91, 42, 134, 0.12) 50%, transparent 65%); }
+.cta .btn:focus-visible { outline-color: var(--accent); }
+@media (max-width: 820px) {
+  .cta { padding: var(--s6) var(--s3); border-radius: 24px; }
+  .cta .actions { justify-content: stretch; }
+  .portrait::before { transform: translate(10px, 10px); }
 }

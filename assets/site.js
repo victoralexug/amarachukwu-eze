@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var date = new Date(it.pubDate.replace(" ", "T") + "Z");
         var when = isNaN(date) ? "" : date.toLocaleDateString("en-GB", { month: "short", year: "numeric" });
         var topic = label(it.categories);
-        var meta = '<span class="tag">Article</span>' + esc(when + (topic ? " · " + topic : ""));
+        var meta = '<span class="tag t-press">Article</span>' + esc(when + (topic ? " · " + topic : ""));
         var link = it.link.split("?")[0];
         var shot = img
           ? '<div class="shot"><img class="fill" src="' + esc(img) + '" alt="" aria-hidden="true" loading="lazy" /><img class="pic" src="' + esc(img) + '" alt="" loading="lazy" /></div>'
