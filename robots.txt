@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /design%20guide/
+
+Sitemap: https://amarachukwueze.com/sitemap.xml
