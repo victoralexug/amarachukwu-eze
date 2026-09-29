@@ -257,7 +257,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (opt) opt.selected = true;
         if (note) note.textContent = "Thank you, your message has been sent. I'll be in touch soon.";
       }).catch(function () {
-        if (note) note.innerHTML = 'Sorry, that didn’t send. Please email <a href="mailto:amarachukwu.eze@gmail.com">amarachukwu.eze@gmail.com</a>.';
+        if (note) note.innerHTML = 'Sorry, that didn’t send. Please email <a href="mailto:amarachukwu@dataherafrica.org">amarachukwu@dataherafrica.org</a>.';
       }).then(function () {
         btn.disabled = false;
         setTimeout(function () { if (note && /Thank you/.test(note.textContent)) note.textContent = original; }, 8000);
