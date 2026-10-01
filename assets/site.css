@@ -839,23 +839,23 @@ html, body { overflow-x: clip; }
 @keyframes ring-spin { to { transform: rotate(360deg); } }
 
 /* ---------- Features: the press ticker ---------- */
-.marquee { margin: 0 calc(50% - 50vw) var(--s8); padding: var(--s3) 0; border-block: 1px solid var(--line); overflow: hidden; }
+.marquee { margin: 0 calc(50% - 50vw) var(--s6); padding: var(--s2) 0; border-block: 1px solid var(--line); overflow: hidden; }
 .marquee-row { display: flex; width: max-content; animation: ticker 40s linear infinite; }
-.marquee-row + .marquee-row { margin-top: var(--s1); animation-direction: reverse; animation-duration: 48s; }
+.marquee-row + .marquee-row { margin-top: 4px; animation-direction: reverse; animation-duration: 48s; }
 .marquee:hover .marquee-row { animation-play-state: paused; }
 .marquee-row span {
   display: inline-flex;
   align-items: center;
-  gap: var(--s6);
-  padding-right: var(--s6);
-  font-size: clamp(2.5rem, 7vw, 6rem);
+  gap: var(--s4);
+  padding-right: var(--s4);
+  font-size: clamp(1.5rem, 3.5vw, 3rem);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.04em;
   white-space: nowrap;
 }
 .marquee-row span::after { content: ""; width: 0.24em; height: 0.24em; border-radius: 50%; background: currentColor; opacity: 0.25; }
-.marquee-row.outline span { color: transparent; -webkit-text-stroke: 1.2px var(--ink); font-weight: 400; }
+.marquee-row.outline span { color: transparent; -webkit-text-stroke: 1px var(--ink); font-weight: 400; }
 .marquee-row.outline span::after { background: var(--ink); }
 @keyframes ticker { to { transform: translateX(-50%); } }
 
@@ -936,7 +936,7 @@ html, body { overflow-x: clip; }
   .intro-split { grid-template-columns: 1fr; gap: var(--s4); padding: var(--s4) 0 var(--s8); }
   .stage-wow, .medal-wow { border-radius: 24px; }
   .book-wow { aspect-ratio: 1; }
-  .marquee { margin-bottom: var(--s6); }
+  .marquee { margin-bottom: var(--s4); }
   .journey { padding: 0 0 var(--s8); }
   .journey-track::before, .journey-track::after { left: 11px; right: auto; top: 0; bottom: 0; width: 1px; height: auto; }
   .journey-track::after { transform-origin: top; transform: scaleY(var(--p, 0)); }
